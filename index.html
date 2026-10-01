@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artarih | Ülkeler ve Tarihleri</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e2228;
+            color: #d1d5db;
+            padding: 20px 15px;
+            line-height: 1.5;
+            font-size: 13px; /* İsteğin üzerine yazılar küçük tutuldu */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header & Logo */
+        header {
+            text-align: center;
+            padding: 25px 0 15px 0;
+            border-bottom: 1px solid #374151;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #f3f4f6;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #9ca3af;
+            font-weight: 300;
+        }
+
+        /* Biyografi Kartı */
+        .bio-card {
+            background-color: #282e37;
+            border: 1px solid #374151;
+            border-left: 4px solid #6b7280;
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .bio-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bio-text {
+            color: #9ca3af;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Arama Çubuğu */
+        .search-container {
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #282e37;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: #f3f4f6;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #9ca3af;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #374151;
+        }
+
+        /* Ülke Listesi */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 640px) {
+            .countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .country-card {
+            background-color: #282e37;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+
+        .country-card:hover {
+            border-color: #6b7280;
+            transform: translateY(-2px);
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 10px;
+        }
+
+        .flag {
+            width: 38px;
+            height: 26px;
+            object-fit: cover;
+            border-radius: 3px;
+            border: 1px solid #4b5563;
+        }
+
+        .country-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #f3f4f6;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .info-item {
+            font-size: 12.5px;
+            color: #d1d5db;
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: #9ca3af;
+        }
+
+        .history-text {
+            font-size: 12px;
+            color: #9ca3af;
+            line-height: 1.5;
+            margin-top: 4px;
+            background-color: #1e2228;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #374151;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #6b7280;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Ar<span>tarih</span></div>
+        </header>
+
+        <!-- Biyografi Bölümü -->
+        <div class="bio-card">
+            <div class="bio-title">Hakkımda & Site Amacı</div>
+            <p class="bio-text">
+                Ben Arda Orhan. Türküm ve Türkiyenin Denizli ilinde yaşamakta olan 13-14 yaşında birisiyim (2026). bu sitenin kurucusu olarak bu sitede insanlara ülkeler hakkında bilgiler verdim. Türk olmam bu sitedeki bilgilere öznel bir düşünce katmamıştır, buna dikkat ettim. ülkeler ve tarihleri gibi konulara ilgi duyduğum için böyle bir site açtım. okuduğunuz için sağolun
+            </p>
+        </div>
+
+        <!-- Arama Çubuğu -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Ülke adı ara... (Örn: Türkiye, Almanya, Fransa)" onkeyup="filterCountries()">
+        </div>
+
+        <div class="section-title">Avrupa Ülkeleri ve Tarihleri</div>
+
+        <!-- Ülkeler Grubu -->
+        <div class="countries-grid" id="countriesGrid">
+
+            <!-- Türkiye -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/tr.png" alt="Türkiye Bayrağı" class="flag">
+                    <div class="country-name">Türkiye (Türkiye Cumhuriyeti)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 29 Ekim 1923</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Mustafa Kemal Atatürk ve Silah Arkadaşları</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> I. Dünya Savaşı sonrasında Osmanlı İmparatorluğu'nun işgal edilmesine karşı Mustafa Kemal Paşa önderliğinde Türk Kurtuluş Savaşı başlatıldı. Zaferin ardından 23 Nisan 1920'de TBMM açıldı ve 29 Ekim 1923'te cumhuriyet ilan edilerek modern Türkiye Cumhuriyeti kuruldu.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Almanya -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/de.png" alt="Almanya Bayrağı" class="flag">
+                    <div class="country-name">Almanya (Federal Almanya)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 18 Ocak 1871 (Siyasi Birlik) / 23 Mayıs 1949 (Federal Cumhuriyet)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Otto von Bismarck, I. Wilhelm</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> Uzun süre irili ufaklı prensliklerden oluşan Alman coğrafyası, Prusya Şansölyesi Otto von Bismarck'ın diplomasisi ve Fransa-Prusya Savaşı zaferi sonrası Versay Sarayı'nda birleşti. II. Dünya Savaşı sonrasında ülke ikiye bölündü, 1990'da tekrar birleşti.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fransa -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/fr.png" alt="Fransa Bayrağı" class="flag">
+                    <div class="country-name">Fransa (Fransa Cumhuriyeti)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 843 (Verdun Antlaşması) / 1792 (I. Cumhuriyet) / 1958 (5. Cumhuriyet)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Şarlman mirası, Napolyon Bonapart, Charles de Gaulle</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> Frank Krallığı'nın bölünmesiyle temelleri atılan Fransa, 1789 Fransız İhtilali ile monarşiyi yıkarak cumhuriyet rejimine geçti. Günümüzdeki 5. Cumhuriyet yapısı II. Dünya Savaşı kahramanı Charles de Gaulle tarafından oluşturulmuştur.
+                    </div>
+                </div>
+            </div>
+
+            <!-- İtalya -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/it.png" alt="İtalya Bayrağı" class="flag">
+                    <div class="country-name">İtalya (İtalya Cumhuriyeti)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 17 Mart 1861 (Birlik) / 2 Haziran 1946 (Cumhuriyet)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Giuseppe Garibaldi, Camillo Benso (Cavour), II. Vittorio Emanuele</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> "Risorgimento" (Yeniden Doğuş) hareketi sayesinde bağımsız şehir devletleri ve prenslikler Garibaldi'nin askeri harekatları ve Cavour'un diplomasisi ile Sardinya Krallığı çatısı altında birleşti. II. Dünya Savaşı sonrası referandumla cumhuriyet kuruldu.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Birleşik Krallık (İngiltere) -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/gb.png" alt="İngiltere Bayrağı" class="flag">
+                    <div class="country-name">Birleşik Krallık (İngiltere)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 927 (İngiltere Krallığı) / 1 Mayıs 1707 (Birleşme Yasası)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Kral Athelstan, Kraliçe Anne</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> Anglo-Sakson krallıklarının Kral Athelstan tarafından birleştirilmesiyle temeli atıldı. 1707 yılında Act of Union (Birleşme Yasası) ile İngiltere ve İskoçya krallıkları parlamentolarını birleştirerek Büyük Britanya Krallığı'nı meydana getirdi.
+                    </div>
+                </div>
+            </div>
+
+            <!-- İspanya -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/es.png" alt="İspanya Bayrağı" class="flag">
+                    <div class="country-name">İspanya (İspanya Krallığı)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 1492 (Katolik Hükümdarlar Birlikteliği)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> I. Isabel (Kastilya) ve II. Fernando (Aragon)</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> Kastilya Kraliçesi Isabel ve Aragon Kralı Fernando'nun evlenmesiyle yarımadadaki Christian krallıklar birleşti. 1492'de Reconquista tamamlanarak Endülüs Emevileri'nin son kalıntısı Gırnata ele geçirildi ve modern İspanya şekillendi.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rusya -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/ru.png" alt="Rusya Bayrağı" class="flag">
+                    <div class="country-name">Rusya (Rusya Federasyonu)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 862 (Kiyev Rus) / 1547 (Çarlık) / 25 Aralık 1991 (Federasyon)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> IV. İvan (Korkunç İvan), I. Petro (Büyük Petro), Boris Yeltsin</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> Doğu Slav kabilelerinin bir araya gelmesi ve Moskova Knezliği etrafında toplanmasıyla Rus Çarlığı kuruldu. Çarlık ve Çarlık sonrası kurulan Sovyetler Birliği'nin (SSCB) 1991'de dağılmasıyla bağımsız Rusya Federasyonu ortaya çıktı.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yunanistan -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/gr.png" alt="Yunanistan Bayrağı" class="flag">
+                    <div class="country-name">Yunanistan (Yunanistan Cumhuriyeti)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 3 Şubat 1830 (Londra Protokolü)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Theodoros Kolokotronis, Ioannis Kapodistrias</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> 1821 yılında Osmanlı İmparatorluğu'na karşı başlatılan isyanın ardından, dönemin büyük güçleri İngiltere, Fransa ve Rusya'nın askeri ve diplomatik müdahalesi sonucu 1830 Londra Protokolü ile bağımsız krallık olarak tanındı.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hollanda -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/nl.png" alt="Hollanda Bayrağı" class="flag">
+                    <div class="country-name">Hollanda (Hollanda Krallığı)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 26 Temmuz 1581 (Bağımsızlık) / 1648 (Vestfalyan)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> Sessiz Willem (Orange Prensi)</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> İspanya Krallığı'nın dini ve mali baskılarına karşı 80 Yıl Savaşları'nı başlatan 7 kuzey eyaleti, Yedi Birleşik Vilayet Cumhuriyeti'ni kurdu. 1648 Vestfalyan Antlaşması ile bağımsızlığı resmiyet kazandı.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polonya -->
+            <div class="country-card">
+                <div class="country-header">
+                    <img src="https://flagcdn.com/w80/pl.png" alt="Polonya Bayrağı" class="flag">
+                    <div class="country-name">Polonya (Polonya Cumhuriyeti)</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label">Kuruluş Tarihi:</span> 966 (Hristiyanlaşma) / 11 Kasım 1918 (İkinci Cumhuriyet)</div>
+                    <div class="info-item"><span class="info-label">Kurucular / Liderler:</span> I. Mieszko, Józef Piłsudski</div>
+                    <div class="history-text">
+                        <strong>Nasıl Kuruldu:</strong> 10. yüzyılda Mieszko'nun Hristiyanlığı kabulüyle devletleşti. 18. yüzyıl sonunda Rusya, Prusya ve Avusturya arasında paylaşılıp haritadan silindiyse de I. Dünya Savaşı'nın ardından Piłsudski önderliğinde yeniden bağımsız oldu.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            &copy; 2026 Artarih - Hazırlayan: Arda Orhan. Tüm hakları saklıdır.
+        </footer>
+    </div>
+
+    <!-- Arama Filtreleme JS -->
+    <script>
+        function filterCountries() {
+            var input = document.getElementById('searchInput');
+            var filter = input.value.toLowerCase();
+            var grid = document.getElementById('countriesGrid');
+            var cards = grid.getElementsByClassName('country-card');
+
+            for (var i = 0; i < cards.length; i++) {
+                var countryName = cards[i].getElementsByClassName('country-name')[0].innerText;
+                if (countryName.toLowerCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+  </html>
+  l
